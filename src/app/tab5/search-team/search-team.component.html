@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Teams</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding [fullscreen]="true">
+
+  <!-- <ion-spinner name="lines" color="dark" class="page-loader" >
+  </ion-spinner> -->
+
+  <div class="page-loader" *ngIf="teamListsLoading">
+    <img src="assets/images/loader.gif">
+  </div>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="!teamListsLoading">
+
+    <p>Join a Team or Create your own Team
+      Participate together & Contribute more
+    </p>
+
+    <ion-card class="str-btn">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <p>Create your own Team</p>
+          </ion-col>
+
+          <ion-col>
+            <ion-button color="primary" expand="block" (click)="createTeam()">Start</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+
+
+    <div class="tm-search">
+      <p>Recommended Teams for you</p>
+      <ion-searchbar (ionInput)="filterItem($event)" [(ngModel)]="searchText" placeholder="Search by Team name">
+      </ion-searchbar>
+    </div>
+
+    <ion-card class="teamCard" *ngFor="let team of teamList">
+      <div>
+        <ion-text *ngIf="team.memberCount>10">
+          Occupancy Fulfilled
+        </ion-text>
+      </div>
+      <ion-card-header>
+        {{team.teamName}}
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <span>{{team.rank}}</span><br>
+              <span>Rank</span>
+            </ion-col>
+            <ion-col>
+              <span>{{team.currentKms| number : '1.0-2'}} km</span><br>
+              <span>Distance</span>
+            </ion-col>
+            <ion-col>
+              <span>{{team.memberCount}}</span><br>
+              <span>Members</span>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col (click)="viewTeam(team.teamID)">
+              <ion-button expand="full" fill="clear">View</ion-button>
+            </ion-col>
+            <ion-col>
+              <ion-button *ngIf="!joinTeamLoading || selectedId != team.teamID" [disabled]="team.memberCount > 10"
+                expand="full" fill="clear" (click)="joinTeam(team.teamID); selectedId = team.teamID">
+                Join
+              </ion-button>
+              <ion-button *ngIf="joinTeamLoading && selectedId == team.teamID" expand="full" fill="clear">
+                <ion-spinner name="dots"></ion-spinner>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+</ion-content>

@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Teams</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-spinner class="page-loader" color="primary" *ngIf="teamDetailsLoading">
+  </ion-spinner> -->
+
+  <div class="page-loader" *ngIf="teamDetailsLoading">
+    <img src="assets/images/loader.gif">
+  </div>
+
+  <div *ngIf="teamDetails" class="my-team">
+    <h3>{{teamDetails.teamName}}</h3>
+    <div class="blueContainer">
+      <p>Rank <span>{{teamDetails.rank}}</span></p>
+      <p>Total Distance <span>{{teamDetails.distance | number : '1.0-2'}} Km</span></p>
+    </div>
+
+    <p class="member-count">{{teamDetails.memberCount}} Team Members</p>
+
+    <ion-card>
+      <ion-card-content>
+        <ion-row *ngFor="let member of teamDetails.members;let i=index"
+          [ngClass]="{'greyContainer': !member.isActiveMember}">
+          <ion-col size="12" *ngIf="!member.isActiveMember" class="left-team">
+            <ion-text>Left Team
+            </ion-text>
+          </ion-col>
+          <ion-col size="8" class="member-name">
+            <p><b>{{member.name}}</b></p>
+            <p>{{location[i]}}</p>
+          </ion-col>
+          <ion-col size="4" class="member-distance">
+            <p>{{member.distance | number : '1.0-2'}} Km</p>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+  </div>
+
+</ion-content>
+<ng-container *ngIf="!currentTeamId && teamDetails">
+  <ion-footer *ngIf="teamDetails.members.length<10">
+    <ion-button expand="block" (click)="!joinTeamLoading && joinTeam()">
+      {{joinTeamLoading?'':'Join'}}
+      <ion-spinner *ngIf="joinTeamLoading" name="dots"></ion-spinner>
+    </ion-button>
+  </ion-footer>
+</ng-container>

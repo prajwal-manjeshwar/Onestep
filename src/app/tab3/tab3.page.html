@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar class="new-background-color">
+
+    <ion-title class="title"><b>Leaderboard</b></ion-title>
+  </ion-toolbar>
+
+</ion-header>
+
+<!-- <ion-spinner class="loadingSpinner" *ngIf="showLoading"></ion-spinner> -->
+
+
+
+<ion-content style="font-family: 'Roboto';">
+
+
+
+  <div *ngIf="showLoading || generateTokenLoading">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <div class="pagePadding" *ngIf="leaderboard">
+    <p class="lableTag">
+      <b>Your Position</b>
+
+    </p>
+    <ion-row class="UserRow">
+
+      <ion-col size="2" class="rankCol">
+        <p> <b>{{rank}}</b></p>
+      </ion-col>
+      <ion-col size="1">
+        <!--  <p > <img  src="assets/images/plant.png"  class="imgProf"></p> -->
+      </ion-col>
+      <ion-col size="6">
+        <p class="boldTxt"><b>{{empName}}</b></p>
+        <p class="medFont">{{location}}</p>
+      </ion-col>
+      <ion-col size="3">
+        <p class="vioTxt">{{totalKMs | number : '1.0-2'}} Km</p>
+        <p>
+          <img src="assets/images/relaxing-walk.png" *ngIf="isWalking" class="activityImg">
+          <img src="assets/images/running-person.png" *ngIf="isJogging" class="runningImg">
+        </p>
+      </ion-col>
+    </ion-row>
+    <p class="lableTag">
+      <b>Top Performers</b>
+    </p>
+
+    <ion-row class="headerRow">
+
+      <ion-col size="2">Rank</ion-col>
+      <ion-col size="1">
+      </ion-col>
+      <ion-col size="6">
+        Name</ion-col>
+      <ion-col size="3">
+        Distance</ion-col>
+    </ion-row>
+    <ion-row class="listRow" *ngFor="let item of leaderboard;let i=index">
+      <ion-col size="2" class="rankCol">
+        <p><b>{{item.Rank}}</b></p>
+      </ion-col>
+      <ion-col size="1">
+        <!--   <p > <img  src="assets/images/plant.png" class="imgProf"></p> -->
+      </ion-col>
+      <ion-col size="6">
+        <p class="boldTxt"><b>{{item.EmpName}}</b></p>
+        <p class="medFont">{{item.EmpLocation}}</p>
+      </ion-col>
+      <ion-col size="3">
+        <p class="vioTxt">{{item.TotalKMs | number : '1.0-2'}} Km</p>
+        <p class="iconRow">
+          <img src="assets/images/relaxing-walk.png" *ngIf="item.Walking" class="activityImg">
+
+          <img src="assets/images/running-person.png" *ngIf="item.Jogging" class="runningImg">
+
+        </p>
+      </ion-col>
+    </ion-row>
+
+
+
+  </div>
+
+</ion-content>

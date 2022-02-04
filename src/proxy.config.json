@@ -1,0 +1,14 @@
+{
+  "/walkforCause/*": {
+    "target": "https://wfcqa.azurewebsites.net/api/walkforCause",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {"^/walkforCause" : ""}
+  },
+  "/oauth2/*": {
+    "target": "https://login.microsoftonline.com/02aa9fc1-18bc-4798-a020-e01c854dd434/oauth2",
+    "changeOrigin": true,
+    "secure": false,
+    "pathRewrite": {"^/oauth2" : ""}
+  }
+}

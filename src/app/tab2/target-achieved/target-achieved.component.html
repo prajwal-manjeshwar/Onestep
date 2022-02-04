@@ -1,0 +1,40 @@
+<ion-content style="font-family: 'Roboto';">
+  <div class="closeButton" (click)="closePopover()">✖</div>
+
+  <h5 class="popUpTitle">Target Achieved</h5>
+
+  <div class="popUpContent">
+    <ion-card>
+      <ion-row>
+
+        <ion-col class="colBorder">
+          Activity
+        </ion-col>
+        <ion-col>
+          Target
+        </ion-col>
+
+      </ion-row>
+      <ion-row class="vioTxt">
+
+        <ion-col class="colBorder">
+          {{currentActivity}}
+        </ion-col>
+        <ion-col>
+          {{targetKm}} KM
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <p style="text-align: center;font-size: 15px;margin-top:20px; color: black">Hurray !!<br>
+      You have completed your current goal. </p>
+
+
+    <div class="divbtn" *ngIf="!inProgress">
+      <p>Do you wish to set a new target ? </p>
+      <button class="popUpBtn" (click)="setTarget()">
+        Set new target
+      </button>
+    </div>
+  </div>
+</ion-content>

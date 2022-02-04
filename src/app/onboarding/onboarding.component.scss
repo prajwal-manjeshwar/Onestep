@@ -1,0 +1,110 @@
+.target--button {
+    float: right;
+    background: #00008C;
+    border-radius: 7px;
+    opacity: 1;
+    color: white;
+    /* margin: auto; */
+    padding: 10px;
+    margin-right: 5%;
+    font-size: medium;
+    // width: 99px;
+    width: 25%;
+    // height: 42px;
+    height: 6.4vh;
+}
+
+.skip--button {
+    float: right;
+    //   background: #00008C;
+    background-color: white;
+    //   border-radius: 7px;
+    //   opacity: 1;
+    font-weight: 600;
+    color: black;
+    /* margin: auto; */
+    padding: 10px;
+    margin-left: 5%;
+    font-size: medium;
+    width: 99px;
+    height: 42px;
+    // width: 96%;
+}
+
+.divbtn {
+    display: inline-block;
+    margin-top: 30px;
+    //   text-align: right;
+    width: 100%;
+}
+
+.target--label {
+    // height: 27px;
+    // font-family: 'Roboto';
+    font-weight: 600;
+    color: #00008C;
+    // font-size: 24px;
+    font-size: 2.8vh;
+}
+
+.message {
+    color: black;
+    text-align: left;
+    padding-left: 10%;
+    padding-right: 10%;
+    font-size: 2.6vh;
+}
+
+ion-button {
+    text-transform: none;
+}
+
+.activity--icon {
+    width: auto;
+    height: 40vh;
+    // border: 1px solid black;
+    // width: 448px;
+    // height: 382px;
+    // width: 500px;
+    //    height: 40vh;
+}
+
+ion-slides {
+    height: 98%;
+}
+
+.swiper-slide {
+    display: block;
+    overflow: scroll;
+}
+
+.footer {
+    position: fixed;
+    bottom: 1%;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+.pager {
+    display: flex;
+    justify-content: center;
+
+    div {
+        height: 6px;
+        padding-left: 18px;
+        padding-right: 18px;
+        border-radius: 10px;
+        position: relative;
+        text-align: center;
+        margin: 1%;
+    }
+}
+
+.pagerActive {
+    background: #00008C;
+}
+
+.pagerInActive {
+    background: #E1E1E1;
+}

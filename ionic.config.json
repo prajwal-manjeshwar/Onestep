@@ -1,0 +1,20 @@
+{
+  "name": "walkForCause",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {
+      "enabled": false
+    }
+  },
+  "type": "angular",
+  "proxies": [
+    {
+      "path": "/walkforCause",
+      "proxyUrl": "https://wfcprod.azurewebsites.net/api/walkforCause"
+    },
+    {
+      "path": "/oauth2",
+      "proxyUrl": "https://login.microsoftonline.com/02aa9fc1-18bc-4798-a020-e01c854dd434/oauth2"
+    }
+  ]
+}

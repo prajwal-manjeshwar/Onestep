@@ -1,0 +1,60 @@
+<ion-content fullscreen scroll-y="false">
+  <ion-slides #theSlides>
+    <!--slide 1-->
+    <ion-slide>
+      <img class="activity--icon" src="assets/images/continueWalking.png" alt="img1">
+      <p class="target--label">Contribute by Walking</p>
+      <p class="message">Walking everyday helps you maintain fitness. Why not use it to drive the change?</p>
+      <div class="footer">
+        <div class="pager">
+          <div class="pagerActive"></div>
+          <div class="pagerInActive"></div>
+          <div class="pagerInActive"></div>
+        </div>
+        <div class="divbtn">
+          <button class="skip--button" style="float: left;" (click)="goToHome()">Skip</button>
+          <button class="target--button" (click)="moveToNext(theSlides)">Next</button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <!--slide 2-->
+    <ion-slide>
+      <img class="activity--icon" style="padding-top: 20%;" src="assets/images/trackProgress.png" alt="img2">
+      <p class="target--label">Track your Progress</p>
+      <p class="message">Track your steps while contributing for a cause</p>
+      <p class="message">Compete to claim the leaderboards and be among the #MilesSuperhero</p>
+      <div class="footer">
+        <div class="pager">
+          <div class="pagerInActive"></div>
+          <div class="pagerActive"></div>
+          <div class="pagerInActive"></div>
+        </div>
+        <div class="divbtn">
+          <button class="skip--button" style="float: left;" (click)="goToHome()">Skip</button>
+          <button class="target--button" (click)="moveToNext(theSlides)">Next</button>
+        </div>
+      </div>
+    </ion-slide>
+
+    <!--slide 3-->
+    <ion-slide>
+      <img class="activity--icon" style="padding-top: 25%;" src="assets/images/joinCause.png" alt="img2">
+      <p class="target--label">Join a Cause</p>
+      <p class="message">Your commitment towards a healthy lifestyle can act as a catalyst for a greener Earth.</p>
+      <p class="message">Let's contribute together</p>
+      <p class="message">Let's Solve</p>
+      <div class="footer">
+        <div class="pager">
+          <div class="pagerInActive"></div>
+          <div class="pagerInActive"></div>
+          <div class="pagerActive"></div>
+        </div>
+        <div class="divbtn">
+          <button class="target--button" style="width: auto;" (click)="goToHome()">Get Started</button>
+        </div>
+      </div>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

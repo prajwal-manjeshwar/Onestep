@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+
+  <ion-toolbar mode="ios">
+    <ion-buttons slot="start">
+      <!-- <button (click)="goBack()"><</button> -->
+      <ion-button slot="start" (click)="goBack()" fill="clear" >
+        <ion-icon slot="icon-only" name="arrow-back" class="backIcon" ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title  class="ion-text-center" style="color: #00008C">Certificate</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true"  style="font-family: 'Roboto';">
+
+  <!-- <canvas #quoteCanvas id="quoteCanvas" width="1173" height="1308" style="width: 100%;"></canvas> -->
+  <canvas #quoteCanvas id="quoteCanvas" width="1236" height="1842" style="width: 100%;"></canvas>
+<!-- 
+  <div class="buttonContainer">
+    <button class="downloadButton" (click)="onDowloadButtonClick()">Download Certificate</button>
+    <button class="downloadButton" (click)="viewImage()">Save and view in Gallery</button>
+  </div> -->
+
+  <!-- <div class="buttonContainer">
+    
+  </div> -->
+
+  <div class="footertext">
+    Feel free to take a screenshot and share your achievement !!!
+  </div>
+  <!-- <p class="welcomeMessage" (click)="onDowloadButtonClick()">Download Certificae</p> -->
+
+</ion-content>

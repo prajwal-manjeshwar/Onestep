@@ -1,0 +1,22 @@
+<ion-content  style="font-family: 'Roboto';">
+  <ion-row style="text-align: right"><ion-col size="12">
+    <img src="assets/icon/user.png" (click)="closeModal()" style="color: black;
+    float: right;
+    width: 20px;
+    margin-left: 7px;">
+  <span class="closeButton" (click)="closeModal()">x</span>
+  </ion-col>
+  </ion-row>
+  <p class="popUpTitle">Choose target</p>
+
+  <div class="popUpContent">
+    <p>You need to set a target first before you start your workout</p>
+
+
+    <div class="divbtn">
+      <button class="popUpBtn" (click)="modalSubmit()">
+        Set Target
+      </button>
+    </div>
+  </div>
+</ion-content>

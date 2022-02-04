@@ -1,0 +1,73 @@
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class='hideBg' *ngIf="showLoading">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+  <div class="mainDiv">
+    <div class="center">
+      <h5 style="margin:2vw;padding:0; font-size: 20px;">Profile</h5>
+      <ion-avatar class="avatar">
+        <ion-img src="assets/images/profile3.png"></ion-img>
+      </ion-avatar>
+      <h5 style="margin:2vw;padding:0; font-size: 22px;">{{empName}}</h5>
+      <p style="margin:2.5vw;padding:0; font-size: 14px;">{{location}}</p>
+    </div>
+
+    <p class="contributedText" *ngIf="totalTrees>0">You have contributed for planting <span
+      style="font-size:20px;">{{totalTrees}}</span>trees</p>
+    <p class="contributedText" *ngIf="totalTrees===0">You are yet to contribute for planting trees</p>
+
+    <ion-card class="mainCard">
+      <ion-row class="cardRow cardColorYellow" style="margin-top: 10px;">
+        <ion-col style="text-align: left; padding-left: 5%;">
+          <span style="color: black; ">For every 50 km i.e. 31 miles walked 1 tree will be planted</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row class="cardRow cardColorBlue">
+        <ion-col size="6" style="color: black;">
+          <span style="padding-left: 5%;">Total distance so far</span>
+        </ion-col>
+        <ion-col style="text-align: right;">
+          <span style="color: #6D63D9;font-size: 18px;"><b>{{totalKm  | number : '1.0-1'}}</b></span> Kms
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <button color="favorite" (click)="viewCertificate()" class="certificateButton">View Certificate</button>
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <ion-card class="bottomCard">
+      <ion-row>
+        <ion-col size="9" style="color: black;">
+          <p style="text-align: left;padding-left:10px; font-size: 14px;">
+            Hearty Congratulations for using 1Step Miles app.
+            <br>
+            Prioritizing better environment is always a good choice!
+          </p>
+          <p style="text-align:left;padding-left:10px">
+            Keep participating and keep growing
+          </p>
+        </ion-col>
+        <ion-col size="3">
+          <img src="assets/images/plant3.png" style="margin-top: 30%; height: 50px; width: 50px;">
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+    <div class="noteDiv">
+      <p>For any queries or suggestions, please write to 1StepMiles@lntinfotech.com</p>
+    </div>
+
+  </div>
+</ion-content>

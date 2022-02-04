@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title color="primary">Create Team</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div [class.hideBg]="employeeDetailsLoading" *ngIf="employeeDetailsLoading">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+  <p class="center">
+    Contribute your efforts as a Team to achieve target completed by you helps
+     towards Tree plantation 
+  </p>
+
+  <img src="assets/images/createTeam.PNG" alt="your image">
+
+  <p class="title">Create a Team Name</p>
+
+  <ion-input (ionChange)="validateName()" [(ngModel)]="teamName" placeholder="Enter Team name"
+    [ngClass]="{'errorTextBox': (placeNameError === true) || (characterLimitError === true) }">
+  </ion-input>
+
+  <p *ngIf="placeNameError" class="errorMessage">- 
+    Team name should not contain such as Location name, your name etc. 
+    ( example – LTIPowai, LTIAiroli etc)
+  </p>
+  <p *ngIf="uniqueTeamError" class="errorMessage">- Team name already exists</p>
+  <p *ngIf="characterLimitError" class="errorMessage">- Character limit should not exceed 20 characters</p>
+  <p *ngIf="specialCharacterError" class="errorMessage">- Team name should not contain special characters</p>
+
+  <p class="border"></p>
+
+  <p class="title">Team Name Guidelines</p>
+  <ul>
+    <li>
+      <p>Team name should not contain a place name</p>
+    </li>
+    <li>Team name should not exceed 20 characters</li>
+    <li>Team name can not contain special characters</li>
+  </ul>
+
+  <ion-button (click)="!createTeamLoading && createTeam()" expand="block">
+    {{createTeamLoading?'':'Create Team'}}
+    <ion-spinner *ngIf="createTeamLoading" name="dots"></ion-spinner>
+  </ion-button>
+
+  <!-- <ion-button *ngIf="createTeamLoading" expand="block">
+    <ion-spinner name="dots"></ion-spinner>
+  </ion-button> -->
+
+</ion-content>

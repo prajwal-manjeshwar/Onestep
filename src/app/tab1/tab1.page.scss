@@ -1,0 +1,358 @@
+    .welcomeMessage{
+        color: #0a090e;
+        font-weight: 700;
+        font-size: 20px; 
+        padding-left: 5%;
+    }
+
+    .subHeading{
+        // font: bold normal medium 16px Roboto;
+        font-size: 16px;
+        font-weight: medium;
+        // font-family: Roboto;
+        // font-family: 'Roboto, Medium';
+    }
+    .cardData{
+        font-size:12px;
+        width: 200px;
+        // font-family: 'Roboto, Regular';
+    }
+
+    .cardContent{
+        padding-top: 5%;
+    }
+
+    ion-card.topCard{
+        height: auto;
+    // background-image:  repeating-linear-gradient(to top right,#9474F1,#BD5DF5);
+    // background: transparent linear-gradient(222deg, #00BDF2 0%, #00008CC2 100%) 0% 0% no-repeat padding-box;
+    background: linear-gradient(385deg,#00008CC2, 80%, #00BDF2 ) 100% 0% no-repeat padding-box;
+    color:white;
+    font-size: 20px;
+    width:90%;
+    margin-left: 5% !important;
+    border-radius: 10px;
+    // height:193px;
+    // font-family: 'Roboto, Medium';
+    }
+    .cardImage{
+    width:34%;
+    height:15%;
+    float:right;
+    opacity:71%;
+
+    }
+    .buttonContainer{
+        text-align: center;
+    }
+
+    .targetButton{
+        text-transform: none;
+        background: white;
+        border-radius: 10px;
+        // margin-left: 14%;
+        margin-top: 4%;
+        width: 220px;
+        height: 35px;
+        font-size: 16px;
+        font-weight: bold;
+        
+    }
+    .continueButton{
+        width: 220px;
+        text-transform: none;
+        background: white;
+        border-radius: 10px;
+        // margin-left: 20%;
+        // margin-top: 2%;
+        // margin-bottom: 10%;
+        margin: auto;
+        height: 35px;
+        font-size: 16px;
+        font-weight: bold;
+    }
+    ion-button{
+        color: #00008C;
+        background-color: white;
+        // font-family: 'Roboto';
+    }
+    .subTitleHeading{
+        font-weight: bold;
+        font-size: 18px; 
+        color: black; 
+        padding-left: 5%; 
+        margin-bottom: 0;
+    }
+
+    .title{
+        font-weight: bold;
+        font-size: 18px; 
+        color: black; 
+        margin-left: 5%;
+        margin-bottom: 0;
+    }
+    .subTitle{
+        padding-left: 5%;
+        color:#6B6B6B;
+        // padding-top: -12%;
+        margin-bottom: 0;
+        font-size: 14px;
+    }
+
+    ion-card.secondCard{
+    background: white;
+    font-size: 12px;
+    width:90%;
+    margin-left: 5% !important;
+    // margin: auto;
+    border-radius: 10px;
+    }
+
+    .graphImage{
+        height: 30%;
+        width: 30%;
+        /* margin-right: auto; */
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+    .percentageValue{
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: auto;
+        position: absolute;
+        color: #F58220;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .secondCardContent{
+        padding-left: 5%;
+        font-size: 12px;
+        color:#414141;
+    }
+
+        ul {
+            padding-left: 0;
+            list-style: none;
+        }
+        li{
+            vertical-align: middle;
+        }
+
+        .firstBullet {
+            height: 15px;
+            width: 15px;
+            background-color:#F58220;
+            border-radius: 50%;
+            // display: inline-block;
+            margin-right: 2%;
+            padding-top: 0;
+            float: left;
+            vertical-align: middle;
+        }
+        .secondBullet {
+            height: 15px;
+            width: 15px;
+            background-color: #FED715;
+            border-radius: 50%;
+            // display: inline-block;
+            float: left;
+            margin-right: 2%;
+            vertical-align: middle;
+        }
+
+    .thirdCard{
+        width: 30%;
+    }
+
+    .fourthCard{
+        // width: 30%;
+        height: 125px;
+        // width: 170px;
+    }
+
+    .fourthCardImage{
+        width: 40%;
+        height:40%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .fifthCardImage{
+        float:left;
+        width: 30%;
+        height:20%;
+        padding-right: 10%;
+        
+    }
+
+    ion-card.fifthCard{
+        background:rgb(250, 218, 94);
+        font-size: 12px;
+        width:90%;
+        margin-left: 5% !important;
+        border-radius: 10px;
+        color:black;
+    }
+
+    .stepCountSpacing{
+        //  padding: 10%;
+        //  float:right;
+        // font-family: 'Roboto, Medium';
+        color: black;
+        font-weight: bold;
+        font-size: 13px;
+    //  padding-left: 33%;
+    }
+    .distanceSpacing{
+        //padding: 10%;
+    //  float:right;
+        color: black;
+        font-weight: bold;
+        font-size: 13px;
+        // font-family: 'Roboto, Medium';
+    //  padding-left: 15%;
+    
+    }
+    .bordercolor{
+        border-left: 1px solid #F5C307;
+        text-align: center !important;
+    }
+    .treePlantedSpacing{
+    //   padding: 10%;
+    //  float:right;
+        color: black;
+        font-weight: bold;
+        font-size: 13px;
+        // font-family: 'Roboto, Medium';
+    //padding-left: 10%;  
+    }
+    .countSpacing{
+        // font-family: 'Roboto, Medium';
+    //  padding-left: 22%;
+        color:#06C539;
+        // padding-top: 7%;
+    
+    }
+
+    .topCardExisting{
+        height: 102px;
+        width:90%;
+        margin-left: 5%;
+    }
+
+    .topCardTarget{
+        // background-image:  repeating-linear-gradient(to top right,#9474F1,#BD5DF5);
+        background: transparent linear-gradient(232deg, #FFD400E6 0%, #F58220ED 100%) 0% 0% no-repeat padding-box;
+    color:white;
+    font-size: 20px;
+    width:90%;
+    margin-left: 5% !important;
+    border-radius: 5%;
+    // height:217px;
+    }
+
+    .badgeIcon{
+
+        // margin-left: 28%;
+        height: 38px;
+        width: 38px;
+        // float: left;
+        background-color: #C4FFD3;
+        padding: 6%;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        margin-top: 2%;
+    }
+    .plantIcon{
+        
+        // margin-left: 37%;
+        height: 38px;
+        width: 38px;
+        // float: left;
+        background-color: #C4FFD3;
+        padding: 6%;
+        border-radius: 50%;
+        display: block;
+        margin: 0 auto;
+        margin-top: 2%;
+    }
+
+    .progressBar{
+        margin-top: 8%;
+        --progress-background: #2AF623;
+    }
+    .textStyle{
+        font-size: 13px;
+        margin-top: 4%;
+    //  position: fixed;
+    }
+    .textPos{
+        font-size: 3vw;
+        float: right;
+        // margin-top: -7%;
+        // margin-left: 73%;
+    }
+    .line{
+        height: 47px;
+        border-left: 1px solid white;
+        position: absolute;
+        margin-left: 52%;
+        margin-top: -10%;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // testing
+
+
+        .scroll-content{
+            padding: 0px !important;
+        }
+        .box{ margin: 0% 5%; padding: 0px 10px; font-size: 1.4rem; height: 60%; background-color: #fff; opacity: 1 !important; margin-top: 20%; border: 1px solid gray; }
+        
+        round-progress{
+            position: absolute;
+            height: 28%;
+            margin-top: -42%;
+            margin-left: 66%;
+        }
+        .main_box{
+            height: 100%;
+        }
+        [col-6]{
+            text-align: center;
+        }
+        .range-md .range-knob, .range-ios .range-knob{
+            width: 30px;
+            height: 30px;
+        }
+        .range-md .range-bar, .range-ios .range-bar{
+            top: 28px;
+        }
+        .label-md, .label-ios{ margin-top: 16px !important;}
+        .current {
+            position: absolute;
+        font-weight: 400;
+        font-size: 28px;
+        margin-top: -33%;
+        margin-left: 74%;
+        
+        }
+        .cardPos{
+            width: 30%;
+        }

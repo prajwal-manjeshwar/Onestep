@@ -1,0 +1,163 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <ion-buttons>
+
+      <ion-button slot="start" (click)="goBack()" fill="clear">
+        <ion-icon slot="icon-only" name="arrow-back" class="backIcon"></ion-icon>
+      </ion-button>
+      <ion-title class="ion-text-center" style="color: #00008C">Set Target</ion-title>
+
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content>
+    <div class="activity--div">
+            <ion-title class="ion-text-center step--label">Step 1 of 2</ion-title>
+              <ion-row class="mt-3">
+                  <ion-col size="5"><ion-text></ion-text>
+                  </ion-col>
+                  <ion-col size="1">
+                      <ion-progress-bar value="1" style="color: #6D63D9"></ion-progress-bar>
+                  </ion-col>
+                  <ion-col size="1">
+                      <ion-progress-bar value="0"></ion-progress-bar>
+                  </ion-col>
+                  <ion-col size="5"><ion-text></ion-text>
+                  </ion-col>
+                </ion-row>              
+      </div>
+
+</ion-content> -->
+
+
+
+<ion-content fullscreen scroll-y="false" style="font-family: 'Roboto';">
+
+
+  <div class='hideBg' *ngIf="service.employeeDetailsLoading">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+
+  <ion-slides #theSlides>
+    <ion-slide class="slide1" *ngIf="page===1">
+
+      <p style="font-size: small;  color: black;">Step <b>1</b> of 2</p>
+      <div class="pager">
+        <div class="pagerActive"></div>
+        <div class="pagerInActive"></div>
+      </div>
+      <!-- <p> Set a target</p> -->
+      <div class="activity--div">
+        <p class="ion-text-center target--label">Select an Activity</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-card class="activity--card " [style.background]="walkButtonColor"
+                (click)="selectActivity(theSlides, 'Walking')">
+                <ion-button class="select--activity"></ion-button>
+                <img class="activity--icon" style="width: 34px; height: 64px;" src="assets/images/WalkingGirl.png"
+                  alt="your image">
+                <ion-text class="activity--label">
+                  <p>Walking</p>
+                </ion-text>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card class="activity--card" [style.background]="jogButtonColor"
+                (click)="selectActivity(theSlides, 'Jogging')">
+                <ion-button class="select--activity"></ion-button>
+                <img class="activity--icon" style="width: 50px; height: 64px;" src="assets/images/joggingMan.png"
+                  alt="your image">
+                <ion-text class="activity--label">
+                  <p>Jogging</p>
+                </ion-text>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <div class="activity--div">
+        <p class="ion-text-center target--label" style="color: #6D63D9;">More Activities</p>
+        <ion-grid>
+          <ion-row>
+            <ion-col size="6">
+              <ion-card class="activity--card " style="padding-top: 10%;">
+                <ion-text class="ion-text-center comingsoon--label">Coming Soon</ion-text>
+                <img class="activity--icon" style="width: 56px; height: 48px;" src="assets/images/skating.png"
+                  alt="your image">
+                <ion-text class="activity--label">
+                  <p>Skating</p>
+                </ion-text>
+              </ion-card>
+            </ion-col>
+            <ion-col size="6">
+              <ion-card class="activity--card" style="padding-top: 10%;">
+                <ion-text class="ion-text-center comingsoon--label">Coming Soon</ion-text>
+                <img class="activity--icon" style="width: 45px; height: 48Sxxxpx;" src="assets/images/workout.png"
+                  alt="your image">
+                <ion-text class="activity--label">
+                  <p>Gymming</p>
+                </ion-text>
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <!-- <div class="divbtn">
+          <button class="target--button" (click)="moveToNext(theSlides)">
+          Next
+        </button >
+      </div> -->
+    </ion-slide>
+    <ion-slide *ngIf="page===2">
+      <p style="font-size: small;  color: black;">Step <b>2</b> of 2</p>
+      <div class="pager">
+        <div class="pagerActive"></div>
+        <div class="pagerActive"></div>
+      </div>
+      <p class="slideTitle"> Set a target </p>
+      <ion-row style="margin-bottom:20px;margin-top:10px">
+        <ion-col size="12">
+          <span class="spanKM">(KM)</span>
+          <span class="value-button" id="decrease" (click)="decreaseValue()">-</span>
+          <input type="number" id="number" readonly (change)="checkValue()" [(ngModel)]="kmVal" [value]="kmVal" />
+          <span class="value-button" id="increase" (click)="increaseValue()">+</span>
+          <span class="spanKM">(KM)</span>
+
+        </ion-col>
+
+
+      </ion-row>
+      <ion-card class="bottomCard">
+        <ion-row style="color:white">
+          <ion-col size="9">
+
+            <p style="text-align: left;padding-left:10px">
+              That's a good Target!
+            </p>
+            <p style="text-align:left;padding-left:10px">
+              Walking will help you earn better health, and a beginner badge<span style="font-size: 24px">☺</span>
+            </p>
+          </ion-col>
+
+          <ion-col size="3">
+            <img src="assets/images/undraw_environment_iaus.svg" style="max-width:100%;max-height:100%;">
+          </ion-col>
+
+        </ion-row>
+      </ion-card>
+
+      <div class="divbtn">
+        <ion-button class="confirmBtn" (click)="!setTargetLoading && setTarget()">
+          {{setTargetLoading?'':'Confirm'}}
+          <ion-spinner *ngIf="setTargetLoading" name="dots" color="light"></ion-spinner>
+        </ion-button>
+      </div>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

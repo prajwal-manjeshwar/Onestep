@@ -1,0 +1,146 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="color:#00008C;text-align:center;font-size: 20px">
+      <b>Activity Statistics</b>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="no-scroll" style="font-family: 'Roboto';">
+
+  <div class='hideBg' *ngIf="targetCompletedLoading||service.employeeDetailsLoading">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher> -->
+  <div *ngIf="!inProgress" class="center">
+
+    <ion-img class="artBoard" src="assets/images/Artboard.png"></ion-img>
+    <h5 style="color:#333333;font-weight:600;margin-top:30px;"> Hey <span>{{name}}</span> !</h5>
+    <h6 style="color:#333333;font-weight:600;margin-top:30px;">
+      Opt for the activity of your choice
+    </h6>
+    <p style="font-size:14px;margin-left:20px;margin-right:20px;">
+      Get started by choosing a target and see your activity statistics.
+    </p>
+    <div class="divbtn">
+      <button class="setTargetbtn" (click)="setTarget()">
+        Set Target
+      </button>
+    </div>
+  </div>
+  <div *ngIf="inProgress">
+
+    <ion-card class="cardStyle">
+      <ion-card-content class="cardContent">
+        <div>
+          <ion-img class="badgeIcon1" src="assets/images/headerBar.png"></ion-img>
+          <ion-img class="badgeIcon2" src="assets/images/sport-shoes.png"></ion-img>
+        </div>
+
+        <div style="text-align: left; font-size: 14px; text-align: center;">
+          You have selected<span style="color:#6D63D9;"><b> {{currentActivity}}</b></span> as your Activity
+          <div class="textStyle" style="font-size: 14px;">Started<br>
+            <span style="color:#6D63D9;font-size: 16px;"> <b>{{goalStartDate | date}} </b> </span>
+          </div>
+          <div class="textPos" style="font-size: 14px;">Goal<br>
+            <span style="color:#6D63D9;font-size: 16px;"> <b>{{targetSteps}} Steps</b></span>
+          </div>
+        </div>
+
+      </ion-card-content>
+
+    </ion-card>
+    <ion-card class="cardButton">
+      <ion-card-content style="text-align: center; padding-left: 13%;   padding-top: 3%;">
+        <div class="textAlign">
+          Modify Goal
+        </div>
+        <div class="penIcon">
+          <ion-img (click)="CreatePopover()" src="assets/images/pen2.png"></ion-img>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div *ngIf="!permissionStatus" class="noteDiv" style="text-align: center; margin-top: 10%;">
+      <p>Please grant Activity permission to record steps</p>
+    </div>
+
+    <div *ngIf="permissionStatus">
+      <!-- <div class="refreshContainer">
+        <span style="float: left; width: 80%;">Please refresh if step counts are not getting updated </span> 
+        <button (click)="restartPedometer()" class="refreshButton"></button>
+      </div> -->
+      <br>
+      <div style="text-align: center;">
+        <p id="rcorners2" [style.background]="milesColor" [style.color]="milesText" (click)="changeMetric('m')">Miles
+        </p>
+        <p id="rcorners1" [style.background]="kmColor" [style.color]="kmText" (click)="changeMetric('k')">Kms</p>
+
+      </div>
+
+      <div style="text-align: center;">
+        <p class="textAlignment">You have walked <span style="color: #7D62EF;font-size:22px">{{percentage}}%</span> of
+          your Goal</p>
+      </div>
+      <round-progress class="graphImage" style=" width: 235px;height: 118px;" [current]="percentage" [max]="100"
+        [color]="'#8B7FFB'" [background]="'white'" [radius]="75" [stroke]="6" [semicircle]="true" [rounded]="true"
+        [clockwise]="true" [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0">
+      </round-progress>
+      <div style="text-align: center; position: relative;">
+
+
+
+        <div class="myCircle"></div>
+        <ion-img class="walkIcon" src="assets/images/walk.png"></ion-img>
+        <div *ngIf="metric==='k'" class="current"><b>{{showCurrentKm | number : '1.0-2'}} Kms</b></div>
+        <div *ngIf="metric==='m'" class="current"><b>{{showCurrentKm | number : '1.0-2'}} miles</b></div>
+        <div *ngIf="metric==='k'" class="bottomText">Target : {{showTargetKm}} Kms</div>
+        <div *ngIf="metric==='m'" class="bottomText">Target : {{showTargetKm}} miles</div>
+      </div>
+
+      <div class="stepCount">Steps Covered: <span style="color: #7D62EF;font-size:22px">
+
+          <span *ngIf="showSpinner" style="margin-top: 2%;">
+            <ion-spinner class="loadingSpinner" name="crescent"></ion-spinner>
+          </span>
+
+          <span *ngIf="!showSpinner">{{currentSteps}}</span>
+
+        </span>
+      </div>
+      <div>
+        <div class="buttonContainer">
+          <ion-button *ngIf="!isPaused" color="favorite" (click)="pause()" class="pause">
+            <ion-img class="pauseIcon" src="assets/images/pause.png"></ion-img> &nbsp; Pause/Stop
+          </ion-button>
+          <ion-button *ngIf="isPaused" color="favorite" (click)="resume()" class="pause">
+            &nbsp; Resume</ion-button>
+          <ion-button color="favorite" (click)="endActivity()" class="endTarget">
+            <ion-img class="endIcon" src="assets/images/stop2.png"></ion-img> &nbsp;
+            End Target
+          </ion-button>
+
+        </div>
+        <!-- <br> -->
+        <div class="noteDiv">
+          <p>It may take a few seconds for the step count to be updated...</p>
+        </div>
+      </div>
+
+      <!-- <div style="text-align: center; width: 100%;" *ngIf="mobileOs == 'ios'">
+        <p id="rcornersPlugin2" [ngClass]="{'selected': pluginSelected == 'p' }" (click)="changePlugin('p')">Pedometer
+        </p>
+        <p id="rcornersPlugin1" [ngClass]="{'selected': pluginSelected == 'h' }" (click)="changePlugin('h')">Health</p>
+      </div> -->
+
+
+    </div>
+
+  </div>
+</ion-content>

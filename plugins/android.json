@@ -1,0 +1,85 @@
+{
+  "prepare_queue": {
+    "installed": [],
+    "uninstalled": []
+  },
+  "config_munge": {
+    "files": {}
+  },
+  "installed_plugins": {
+    "com.telerik.plugins.healthkit": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-android-support-gradle-release": {
+      "ANDROID_SUPPORT_VERSION": "27.+",
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-advanced-http": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-android-permissions": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-androidx-adapter": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-device": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-file-opener2": {
+      "ANDROID_SUPPORT_V4_VERSION": "27.+",
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-file-transfer": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-health": {
+      "FIT_API_VERSION": "20.0.0",
+      "PLAY_AUTH_VERSION": "19.0.0",
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-ionic-keyboard": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-ionic-webview": {
+      "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+",
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-network-information": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-pedometer": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-permission": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-screen-orientation": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-splashscreen": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-statusbar": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-plugin-whitelist": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova-sqlite-storage": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "cordova.plugins.diagnostic": {
+      "ANDROIDX_VERSION": "1.+",
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    }
+  },
+  "dependent_plugins": {
+    "cordova-plugin-file": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    },
+    "es6-promise-plugin": {
+      "PACKAGE_NAME": "io.ionic.OneStepMiles"
+    }
+  }
+}

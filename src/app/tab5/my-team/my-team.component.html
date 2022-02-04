@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Teams</ion-title>
+  </ion-toolbar>
+  <ion-toolbar color="primary">
+    <ion-title>{{teamDetails?.teamName}}</ion-title>
+  </ion-toolbar>
+  <ion-segment mode="md" [(ngModel)]="team" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="myTeam">
+      <ion-label>My Team</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="otherTeam">
+      <ion-label>Other Teams</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <!-- <ion-spinner class="page-loader" color="primary" *ngIf="teamDetailsLoading">
+  </ion-spinner> -->
+  <div class="page-loader" *ngIf="teamDetailsLoading">
+    <img src="assets/images/loader.gif">
+  </div>
+
+  <ng-container *ngIf="team === 'myTeam'">
+    <div *ngIf="teamDetails" class="my-team">
+      <div class="blueContainer">
+        <p>Rank <span>{{teamDetails.rank}}</span></p>
+        <p>Total Distance <span>{{teamDetails.distance | number : '1.0-2'}} Km</span></p>
+      </div>
+
+      <p class="member-count">{{teamDetails.memberCount}} Team Members</p>
+
+      <ion-card>
+        <ion-card-content>
+          <ion-row *ngFor="let member of teamDetails.members;let i=index"
+            [ngClass]="{'greyContainer': !member.isActiveMember}">
+            <ion-col size="12" *ngIf="!member.isActiveMember" class="left-team">
+              <ion-text>Left Team
+              </ion-text>
+            </ion-col>
+            <ion-col size="8" class="member-name">
+              <p><b>{{member.name}}</b></p>
+              <p>{{location[i]}}</p>
+            </ion-col>
+            <ion-col size="4" class="member-distance">
+              <p>{{member.distance | number : '1.0-2'}} Km</p>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
+      </ion-card>
+    </div>
+  </ng-container>
+
+  <!-- Other Teams Tab -->
+
+  <div *ngIf="team === 'otherTeam'">
+    <ng-container *ngFor="let team of teamList">
+      <ion-card *ngIf="team.teamID != currentTeamId" class="teamCard">
+        <div>
+          <ion-text *ngIf="team.memberCount>10">
+            Occupancy Fulfilled
+          </ion-text>
+        </div>
+        <ion-card-header>
+          {{team.teamName}}
+        </ion-card-header>
+        <ion-card-content>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+                <span>{{team.rank}}</span><br>
+                <span>Rank</span>
+              </ion-col>
+              <ion-col>
+                <span>{{team.currentKms| number : '1.0-2'}} km</span><br>
+                <span>Distance</span>
+              </ion-col>
+              <ion-col>
+                <span>{{team.memberCount}}</span><br>
+                <span>Members</span>
+              </ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col (click)="viewTeam(team.teamID)">
+                <ion-button expand="full" fill="clear">View</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+        </ion-card-content>
+      </ion-card>
+    </ng-container>
+  </div>
+</ion-content>
+<ion-footer *ngIf="team === 'myTeam' && teamDetails">
+  <ion-button (click)="!exitTeamLoading && exitTeam()" expand="block">
+    {{exitTeamLoading?'':'Exit Team'}}
+    <ion-spinner *ngIf="exitTeamLoading" name="dots" color="light"></ion-spinner>
+  </ion-button>
+  <!-- <ion-button *ngIf="exitTeamLoading" expand="block">
+    <ion-spinner name="dots" color="light"></ion-spinner>
+  </ion-button> -->
+</ion-footer>

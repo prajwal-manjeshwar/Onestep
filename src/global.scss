@@ -1,0 +1,81 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import "~@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+// .modal-wrapper {
+//     height: 60% !important;
+//     width: 90% !important;
+//  }
+.modalPopover .popover-content {
+    --max-width: 100%;
+    left: 5% !important;
+}
+.popover-content sc-ion-popover-ios {
+    top: 156.667px;
+    left: 23.5px;
+    transform-origin: left top;
+    width: 88%;
+}
+ion-button {
+    text-transform: none;
+}
+
+* {
+    font-family: "Roboto";
+}
+
+.loadingContainer {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.hideBg {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5);
+    z-index: 9999;
+}
+.page-loader {
+    top: 50%;
+    left: 50%;
+    position: fixed;
+    z-index: 9999;
+    img{
+        width: 35px;
+    }
+}
+
+.invalid {
+    border-bottom: 1px solid red !important;
+}
+
+ion-back-button {
+    color: var(--ion-color-primary);
+}

@@ -1,0 +1,176 @@
+.toolbar-background{
+    border:none !important;
+}
+
+.modalPopup{
+    height:auto;
+    width:100%;
+}
+.popUpTitle {
+  // margin-top: 15px;
+  color: #00008C;
+  text-align: center;
+  font-weight: 500;
+  font-size: 24px;
+}
+
+ion-icon {
+  color: #00008C;
+  // margin-right: 10px;
+  padding: 10px;
+  font-size: 30px;
+}
+.closeButton {
+  text-align: right;
+  // font-size: xx-large;
+  color: #00008C;
+  margin-right: 10px;
+  font-size: 24px;
+}
+.popUpBtn {
+background: #00008C;
+border-radius: 7px;
+opacity: 1;
+color:white;
+margin:auto;
+//width:100px;
+padding: 10px 20px;
+font-size:medium;
+}
+.box-lbl{
+    font-size:small;
+    text-align: left;
+    color: #333333;
+    margin-top:2px;
+    margin-bottom:2px;
+    }
+.popUpContent{
+    
+    margin:20px;
+    margin-top:15px;
+}
+.divbtn{
+    align-items: center;
+    text-align: center;
+}
+.wrapText{
+    word-wrap: wrap break-word;
+    padding-left:10px;
+}
+.itemRow{
+    margin:10px;
+    text-align:left;
+}
+ .radio-icon{
+    border-color:red !important; 
+ }
+.radio-checked .radio-icon
+{
+border-color:red;
+}
+
+//---
+.yellowCard{
+  background:   #FFD400;
+  padding:10px;
+  align-items: center;
+  text-align: center;
+  margin:10px 0px;
+}
+//
+
+
+
+///---
+
+ion-card{
+ margin: 10px 0px 20px 0px;
+padding:1px;
+    ion-row{
+      align-items:center;
+      text-align: center;
+      color:black;
+    }
+    ion-col.colBorder{
+       
+      border-right: 1px solid rgb(248, 146, 146);
+    }
+    ion-row.vioTxt{
+        color:#6D63D9;
+    }
+}
+
+
+//set target
+
+.value-button {
+    // display: inline-block;
+      border: 1px solid #ddd;
+      margin: 0px;
+    // width: 40px;
+      height: 40px;
+    // text-align: center;
+    // vertical-align: middle;
+      padding: 12px;
+      background: #eee;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+     
+    .value-button:hover {
+      cursor: pointer;
+    }
+     
+    #decrease {
+      margin-right: -4px;
+      border-radius: 8px 0 0 8px;
+      color:#00008C;
+    }
+     
+    #increase {
+      margin-left: -4px;
+      border-radius: 0 8px 8px 0;
+      color:#00008C;
+    }
+     
+    #input-wrap {
+      margin: 0px;
+      padding: 0px;
+    }
+     
+    input#number {
+      text-align: center;
+      border: none;
+      border-top: 1px solid #ddd;
+      border-bottom: 1px solid #ddd;
+      margin: 0px;
+      width: 30%;
+      height: 44px;
+      color:#00008C
+    }
+     
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+    .selectActivity{
+        border: 1px solid #00000029;
+        color: black;
+        border-radius: 7px;
+        margin: 10px 0px 20px 0px;
+        padding: 6px 20px 6px 10px;
+        color:#333333
+    }
+    .spanKM{
+        color: #6D63D9;
+        // margin:10px;
+    }
+
+    ion-button{
+      width: 145px !important;
+    }

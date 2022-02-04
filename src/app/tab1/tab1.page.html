@@ -1,0 +1,267 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title style="color: #00008C;text-align:center;font-size: 20px">
+      <b>Dashboard</b>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="font-family: 'Roboto';">
+
+  <div class='hideBg' *ngIf="!refresher && (getEmpDetailsLoading || getUserCountLoading ||
+  getTreesPlantedLoading || getLeaderboardDetailsLoading || generateTokenLoading)">
+    <div class="page-loader">
+      <img src="assets/images/loader.gif">
+    </div>
+  </div>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div>
+    <p *ngIf="firstName" class="welcomeMessage">Hello <span style="color: #00008C;"> {{firstName}}</span>,
+      <span style="font-weight: 500">Welcome<span *ngIf="existingUser"> Back!</span> </span>
+    </p>
+
+    <div>
+      <p *ngIf="totalSteps" class="title">Score Board</p>
+      <span class="subTitle" *ngIf="totalKm>=1">Awesome! Your score is commendable</span>
+
+      <div *ngIf="totalSteps">
+        <ion-card class="topCardExisting" style="margin-top: 3%;">
+          <ion-grid>
+            <ion-row>
+              <ion-col style="text-align: center;">
+                <div class="stepCountSpacing">Steps</div>
+                <div class="countSpacing">{{totalSteps}}</div>
+                <div class="countSpacing" style="text-align:center;">
+                  <ion-img class="badgeIcon" src="assets/images/badge.png"></ion-img>
+                </div>
+              </ion-col>
+              <ion-col class="bordercolor" style="text-align: center;">
+                <div class="distanceSpacing">Distance</div>
+                <div class="countSpacing">{{totalKm | number : '1.0-1'}} Kms</div>
+                <div class="countSpacing">
+                  <ion-img class="badgeIcon" src="assets/images/badge.png"></ion-img>
+                </div>
+              </ion-col>
+              <ion-col class="bordercolor" style="text-align: center;">
+                <div class="treePlantedSpacing">Trees Planted</div>
+                <div class="countSpacing">{{totalTrees}}</div>
+                <div class="countSpacing">
+                  <ion-img class="plantIcon" src="assets/images/plant.png"></ion-img>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-card>
+      </div>
+
+
+      <ion-card class="topCard" *ngIf="inProgress">
+        <ion-card-header style="padding-bottom: 1%; padding-top: 4%;">
+
+          <ion-card-title style="color:white">
+
+            <span style="font-size: 5.5vw; font-weight: 600;"><u>Your</u> ongoing {{activityType}}</span>
+            <!-- <div class="textStyle">{{stepProgress}}%<br>
+              {{currentKm}}Kms</div> -->
+
+            <!-- <div class="textStyle" style="font-size: 16;">{{location}}<br>
+              {{targetDate | date: 'mediumDate'}}</div> -->
+            <!-- <div class="line"></div>
+              <div class="textPos" style="font-size: 16;">{{currentKm}}Kms<br>
+                {{currentTime}}</div> -->
+
+          </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content>
+          <span style="font-size: 5.5vw; font-weight: 600;">{{currentSteps}}/</span> <span
+            style="font-size: 3.7vw; font-weight: 600;">{{targetSteps}}
+            Steps Completed</span>
+          <br>
+          <div class="textPos">Goal: {{targetKm}}Kms</div>
+          <ion-progress-bar [value]="kmProgress/100" class='progressBar'></ion-progress-bar>
+
+          <div style="text-align: center; ">
+            <span style="font-size: 3vw;">Distance Covered: {{currentKm | number : '1.0-2'}}Kms</span>
+            <ion-button color="favorite" (click)="startWalk()" class="button continueButton" style="margin-top: 4%;">
+              Continue Walking</ion-button>
+          </div>
+
+        </ion-card-content>
+
+
+      </ion-card>
+      <!-- <div>
+        <p class="title">Target Progress </p>
+        <span class="subTitle">{{firstName}}, Below is your progress</span>
+      </div>
+      <ion-card class="topCardTarget" style="margin-top: 3%;" *ngIf="inProgress">
+        <ion-grid>
+          <ion-row style="padding-bottom: 5%;">
+            <ion-col>
+              <ion-card-header>
+
+                <ion-card-title style="color:white; width: 178px">
+
+                  <span style="font-size: 25px;">{{currentSteps}}/</span> <span style="font-size: 20px;">{{targetSteps}}
+                    Steps</span>
+                </ion-card-title>
+
+              </ion-card-header>
+
+              <ion-card-content style="width:70%">
+
+                <span class="cardData">
+                  Walking <span style="font-size: 16px;">{{targetSteps - currentSteps}}</span>
+                  Steps more will help in planting <span style="font-size: 18px;"></span> {{treeCount}} more Trees
+                </span>
+
+              </ion-card-content>
+              <div style="margin-top: 8%;">
+                <div class="current">{{stepProgress}}%</div>
+                <round-progress [current]=stepProgress [max]="100" [color]="'#1E72C7'" [background]="'white'"
+                  [radius]="50" [stroke]="10" [semicircle]="false" [rounded]="true" [clockwise]="true"
+                  [responsive]="false" [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0">
+                </round-progress>
+
+              </div>
+            </ion-col>
+
+            <ion-button color="favorite" (click)="startWalk()" class="button continueButton">Continue Walking
+            </ion-button>
+          </ion-row>
+        </ion-grid>
+      </ion-card> -->
+    </div>
+    <div *ngIf="!inProgress">
+      <ion-card class="topCard">
+        <ion-card-header>
+          <ion-card-title style="color:white">
+            <u>Walk</u> for a cause
+            <ion-img class="cardImage" src="assets/images/firstCard.png"></ion-img>
+
+          </ion-card-title>
+
+        </ion-card-header>
+
+        <ion-card-content class="cardContent">
+          <span class="subHeading">Do you wish to contribute for a cause?</span><br>
+          <span class="cardData">Each target completed by you helps in a cause of tree plantation.</span><br>
+          <div class="buttonContainer">
+            <ion-button color="favorite" (click)="setTarget()" class="button targetButton">Set Target</ion-button>
+          </div>
+
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+
+    <div *ngIf="getTreesPlantedLoaded">
+      <p class="subTitleHeading">Analysis</p>
+      <span class="subTitle">Here's the overall analysis</span>
+    </div>
+
+    <ion-card *ngIf="getTreesPlantedLoaded" class="secondCard" style="margin-top: 3%;">
+
+      <ion-card-content class="secondCardContent">
+        <ion-row no-padding>
+          <ion-col col-3>
+            <round-progress class="graphImage" [current]="75" [max]="100" [color]="'#F58220'" [background]="'#FED715'"
+              [radius]="50" [stroke]="13" [semicircle]="false" [rounded]="true" [clockwise]="true" [responsive]="false"
+              [duration]="800" [animation]="'easeInOutQuart'" [animationDelay]="0"></round-progress>
+            <div class="percentageValue">{{avgTreesCount}}</div>
+          </ion-col>
+        </ion-row>
+        <ion-row no-padding>
+          <ion-col>
+            <ul>
+              <li><span class="firstBullet"></span> <span style="float: left;">Average trees planted per week</span>
+                <span style="float:right">{{avgTreesCount}}</span>
+              </li>
+            </ul>
+            <br>
+            <ul>
+              <li><span class="secondBullet"></span>People contributing for a cause <span
+                  style="float:right">{{contributingPeopleCount}}</span></li>
+            </ul>
+
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+    </ion-card>
+
+
+    <div>
+      <p class="subTitleHeading">Activities you can opt for</p>
+      <span class="subTitle">Here's how you can help for a cause</span>
+    </div>
+    <div>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-card class="fourthCard">
+
+              <ion-card-header>
+                <ion-card-title>
+                  <ion-img class="fourthCardImage" src="assets/images/walking.png"></ion-img>
+                </ion-card-title>
+
+              </ion-card-header>
+
+              <ion-card-content>
+                <h5 style="text-align: center;"><b>Walking</b></h5>
+
+              </ion-card-content>
+
+            </ion-card>
+          </ion-col>
+          <ion-col>
+            <ion-card class="fourthCard">
+              <ion-card-header>
+                <ion-card-title>
+                  <ion-img class="fourthCardImage" src="assets/images/jogging.png"></ion-img>
+                </ion-card-title>
+
+              </ion-card-header>
+
+              <ion-card-content>
+                <h5 style="text-align: center;"><b>Jogging</b></h5>
+
+              </ion-card-content>
+
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+
+    <div>
+      <p class="subTitleHeading">Did you know?</p>
+      <span class="subTitle">You can contribute to a cause by planting a tree?</span>
+    </div>
+    <ion-card class="fifthCard">
+
+      <ion-card-content style="text-align:initial;">
+        <ion-img col-md-4 class="fifthCardImage" src="assets/images/plants.png"></ion-img>
+
+        <span col-md-8 tyle="font-size: 14px"> We will plant one tree for every 50Kms / 31 miles you cover. Let's go the
+          mile</span>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- <ion-card>
+      <div> -->
+        <!-- <p class="subTitleHeading"><a href="https://www.lntinfotech.com/general-privacy-policy/">Privacy policy</a></p><br> -->
+        <!-- <a href="#" onclick="window.open('https://www.lntinfotech.com/general-privacy-policy/','_system','location=yes')">Privacy policy</a> -->
+        <!-- <ion-button color="favorite" (click)="openPrivacyPolicy('https://www.lntinfotech.com/general-privacy-policy/')" style="margin-top: 4%;">Privacy Policy</ion-button>
+      </div>
+    </ion-card> -->
+  </div>
+</ion-content>

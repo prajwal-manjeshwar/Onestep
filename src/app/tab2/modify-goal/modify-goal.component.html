@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar mode='ios'>
+    <!-- <ion-title class="popUpTitle">Modify Goal</ion-title> -->
+    <ion-buttons slot="end">
+      <!-- <ion-icon (click)="closePopover()" name="close"></ion-icon> -->
+      <div class="closeButton" (click)="closePopover()">✖</div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content style="font-family: 'Roboto';">
+
+  <div class="popUpTitle">Modify Goal</div>
+  <!-- <div class="closeButton" (click)="closePopover()">x</div> -->
+  <!-- </ion-col>
+    </ion-row> -->
+  <!-- <h4 class="popUpTitle">Modify Goal</h4> -->
+
+  <div class="popUpContent">
+    <label class="box-lbl">Current Goal</label>
+    <ion-card>
+      <ion-row>
+
+        <ion-col class="colBorder">
+          Activity
+        </ion-col>
+        <ion-col>
+          Target
+        </ion-col>
+
+      </ion-row>
+      <ion-row class="vioTxt">
+
+        <ion-col class="colBorder">
+          {{currentActivity}}
+        </ion-col>
+        <ion-col>
+          {{targetkm}} KM
+        </ion-col>
+      </ion-row>
+    </ion-card>
+
+
+    <label class="box-lbl">Select Activity</label>
+    <br>
+    <ion-select okText="Done" (ionChange)="selectActivity($event)" [value]="activity" class="selectActivity">
+      <ion-select-option [value]="'Walking'" style="color: black;">Walking</ion-select-option>
+      <ion-select-option [value]="'Jogging'">Jogging</ion-select-option>
+    </ion-select>
+    <label class="box-lbl">Set Target</label>
+    <ion-row style="margin-bottom:10px;margin-top:10px">
+      <ion-col style="text-align: center;" size="12">
+        <span class="spanKM" style="margin-right: 5px;">(KM)</span>
+        <span class="value-button" id="decrease" (click)="decreaseValue()">-</span>
+        <input type="number" id="number" (change)="checkValue()" [(ngModel)]="target" [value]="target" />
+        <span class="value-button" id="increase" (click)="increaseValue()">+</span>
+        <span class="spanKM" style="margin-left: 5px;">(KM)</span>
+
+      </ion-col>
+
+
+    </ion-row>
+
+
+    <ion-row *ngIf="isYellowCard" class="yellowCard">
+      <ion-col size="2">
+        <img src="assets/icon/warning-sign.svg">
+      </ion-col>
+      <ion-col size="10">
+        <div style='font-size:small'> You cannot set a target below your current progress</div>
+        <div style="font-size:small">Please choose a bigger goal.</div>
+      </ion-col>
+    </ion-row>
+    <div class="divbtn">
+      <!-- <button class="popUpBtn" *ngIf="isYellowCard" (click)="submit()">
+      Save Changes  
+</button > -->
+      <ion-button (click)="submit()">
+        {{modifyLoading?'':'Save & Continue '}}
+        <ion-spinner *ngIf="modifyLoading" name="dots" color="light"></ion-spinner>
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,91 @@
+.toolbar-background{
+    border:none !important;
+}
+
+.modalPopup{
+    height:auto;
+width:100%;
+}
+.popUpTitle{
+  color: #00008C;
+  text-align: center;
+  font-size: 18px;
+  font-weight:500;
+  margin-top: 0%;
+}
+.popUpBtn {
+background: #00008C;
+border-radius: 7px;
+opacity: 1;
+color:white;
+margin:auto;
+//width:100px;
+padding: 10px 20px;
+font-size:medium;
+}
+.box-lbl{
+    font-size:small;
+    text-align: left;
+    color: #333333;
+    margin-top:2px;
+    margin-bottom:2px;
+    }
+.popUpContent{
+    margin:20px 11px;
+}
+.divbtn{
+    align-items: center;
+    text-align: center;
+}
+.wrapText{
+    word-wrap: wrap break-word;
+    padding-left:10px;
+}
+.itemRow{
+    margin:10px;
+    text-align:left;
+}
+ .radio-icon{
+    border-color:red !important; 
+ }
+.radio-checked .radio-icon
+{
+border-color:red;
+}
+
+//---
+.yellowCard{
+  background:   #FFD400;
+  padding:10px;
+  align-items: center;
+  text-align: center;
+  margin:10px 0px;
+}
+//
+
+.closeButton{
+    text-align: right;
+    font-size: xx-large;
+    color: #00008C;
+    margin-right: 10px;
+}
+
+///---
+
+ion-card{
+margin:10px;
+padding:1px;
+    ion-row{
+      align-items:center;
+      text-align: center;
+      color:black;
+    }
+    ion-col.colBorder{
+       
+      border-right: 1px solid rgb(248, 146, 146);
+    }
+    ion-row.vioTxt{
+        color:#6D63D9;
+    }
+}
+
